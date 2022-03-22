@@ -1,0 +1,25 @@
+.footer {
+  height: 120px;
+  background-color: #F2F2F2;
+  display: flex;
+  box-sizing: border-box;
+  padding: 22px 130px;
+
+  &__logo {
+    height: 64px;
+    padding-top: 6px;
+    margin-right: 40px;
+  }
+  &__title {
+    &_address {
+      margin-bottom: 6px;
+    }
+    &_phone {
+      margin-bottom: 10px;
+    }
+    &_url {
+      font-weight: 500;
+      color: #1F4766;
+    }
+  }
+}

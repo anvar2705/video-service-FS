@@ -1,0 +1,49 @@
+.movieItem {
+  width: 280px;
+  height: 460px;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .3s;
+
+  &:hover .movieItem__image img {
+    transition-duration: .3s;
+    opacity: .2;
+  }
+
+  &:hover .movieItem__subtitle {
+    transition-duration: .3s;
+    display: block;
+  }
+
+  &__image {
+    background: #333333;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border-radius: 8px;
+
+    img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      transition-duration: .3s;
+    }
+  }
+  &__title {
+    font-size: 20px;
+  }
+  &__subtitle {
+    display: none;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 338px;
+    padding: 16px;
+    font-size: 16px;
+    color: white;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+  }
+}
