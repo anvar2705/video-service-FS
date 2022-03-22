@@ -2,14 +2,14 @@ import React, { FC } from 'react'
 import s from './Genre.module.scss'
 
 interface IGenreProps {
-  imageSrc: string
+  image: string
   title: string
 }
 
-const Genre: FC<IGenreProps> = ({ imageSrc, title }) => {
+const Genre: FC<IGenreProps> = ({ image, title }) => {
   return (
     <div className={s.genre}>
-      <img src={imageSrc} alt={title} />
+      <div className={s.genre__image}>{image}</div>
       <div className={s.genre__title}>{title}</div>
     </div>
   )
