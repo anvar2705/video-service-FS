@@ -2,13 +2,13 @@ import React, { ChangeEvent, FC, FormEvent, useState } from 'react'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import StyledInput from '../input/StyledInput'
 
-interface SearchProps {
+interface ISearchProps {
   onSubmit: (event: FormEvent<HTMLFormElement>, value: string) => void
   placeholder?: string
   [key: string]: any
 }
 
-const Search: FC<SearchProps> = ({ onSubmit, placeholder = 'Поиск...', ...props }) => {
+const Search: FC<ISearchProps> = ({ onSubmit, placeholder = 'Поиск...', ...props }) => {
   const [value, setValue] = useState('')
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -1,13 +1,13 @@
 import React, { ChangeEvent, FC } from 'react'
 import s from './Checkbox.module.scss'
 
-interface CheckboxProps {
+interface ICheckboxProps {
   checked: boolean
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   label: string
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onChange, label }) => {
+const Checkbox: FC<ICheckboxProps> = ({ checked, onChange, label }) => {
   return (
     <>
       <input
