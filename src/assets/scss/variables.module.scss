@@ -15,6 +15,7 @@ $screen-xl-max: 1599px;
 $color-main: #E5261E;
 $color-main-dark: #CC221B;
 $color-background: #F2F2F2;
+$color-background-dark: #333333;
 
 :export {
   screenXS: $screen-xs;
@@ -33,4 +34,5 @@ $color-background: #F2F2F2;
   colorMain: $color-main;
   colorMainDark: $color-main-dark;
   colorBackground: $color-background;
+  colorBackgroundDark: $color-background-dark;
 }
