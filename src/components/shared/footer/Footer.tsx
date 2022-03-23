@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
 import logoFooter from 'assets/images/logo-footer.svg'
 import s from './Footer.module.scss'
 
-const Footer = () => {
+interface IFooterProps {
+  maxWidth: number
+}
+
+const Footer: FC<IFooterProps> = ({ maxWidth }) => {
+  const paddingLeftRight = (window.innerWidth - maxWidth) / 2
   return (
-    <div className={s.footer}>
+    <div className={s.footer} style={{ padding: `22px ${paddingLeftRight}px` }}>
       <img src={logoFooter} alt='logo footer' className={s.footer__logo} />
       <div className={s.footer__title}>
         <div className={s.footer__title_address}>

@@ -171,7 +171,7 @@ export const CHANNELS: Array<IChannelsData> = [
     ],
   },
   {
-    id: 0,
+    id: 4,
     title: 'Первый канал',
     imageSrc: channel1,
     schedule: [
@@ -193,7 +193,7 @@ export const CHANNELS: Array<IChannelsData> = [
     ],
   },
   {
-    id: 1,
+    id: 5,
     title: '2x2',
     imageSrc: channel2,
     schedule: [
@@ -215,7 +215,7 @@ export const CHANNELS: Array<IChannelsData> = [
     ],
   },
   {
-    id: 2,
+    id: 6,
     title: 'РБК',
     imageSrc: channel3,
     schedule: [
@@ -237,7 +237,7 @@ export const CHANNELS: Array<IChannelsData> = [
     ],
   },
   {
-    id: 3,
+    id: 7,
     title: 'AMEDIA PREMIUM',
     imageSrc: channel4,
     schedule: [
