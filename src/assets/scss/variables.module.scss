@@ -1,0 +1,36 @@
+// === VARIABLES ===
+$screen-xs: 320px;
+$screen-s: 480px;
+$screen-m: 800px;
+$screen-l: 1024px;
+$screen-xl: 1280px;
+$screen-xxl: 1600px;
+
+$screen-xs-max: 479px;
+$screen-s-max: 799px;
+$screen-m-max: 1023px;
+$screen-l-max: 1279px;
+$screen-xl-max: 1599px;
+
+$color-main: #E5261E;
+$color-main-dark: #CC221B;
+$color-background: #F2F2F2;
+
+:export {
+  screenXS: $screen-xs;
+  screenS: $screen-s;
+  screenM: $screen-m;
+  screenL: $screen-l;
+  screenXL: $screen-xl;
+  screenXXL: $screen-xxl;
+
+  screenXSMax: $screen-xs-max;
+  screenSMax: $screen-s-max;
+  screenMMax: $screen-m-max;
+  screenLMax: $screen-l-max;
+  screenXLMax: $screen-xl-max;
+
+  colorMain: $color-main;
+  colorMainDark: $color-main-dark;
+  colorBackground: $color-background;
+}

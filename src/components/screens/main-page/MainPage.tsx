@@ -4,7 +4,6 @@ import Search from 'components/shared/inputs/search/Search'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import Tabs from 'components/shared/tabs/Tabs'
 import { TABS } from 'components/constants/constants'
-import Footer from '../../shared/footer/Footer'
 
 const MainPage = () => {
   const onSubmit = (event: FormEvent<HTMLFormElement>, value: string) => {
