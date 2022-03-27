@@ -3,14 +3,17 @@ import StyledInput from 'components/shared/inputs/input/StyledInput'
 import s from './Login.module.scss'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import Checkbox from 'components/shared/checkboxes/Checkbox'
+import { login, logout } from 'store/thunks/authThunks'
+import { useAppDispatch } from 'hooks/redux'
 
 const Login = () => {
-  const [login, setLogin] = useState('')
+  const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
   const [isRemember, setIsRemember] = useState(false)
+  const dispatch = useAppDispatch()
 
   const onHandleClick = () => {
-    console.log(`Login: ${login}, pass: ${pass}, isRemember: ${isRemember}`)
+    dispatch(login(username, pass))
   }
 
   return (
@@ -19,9 +22,9 @@ const Login = () => {
       <div className={s.login__form}>
         <StyledInput
           placeholder='Логин'
-          value={login}
+          value={username}
           onChange={(event) => {
-            setLogin(event.target.value)
+            setUsername(event.target.value)
           }}
         />
         <StyledInput

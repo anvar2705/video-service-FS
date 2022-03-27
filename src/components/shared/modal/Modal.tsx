@@ -13,14 +13,14 @@ const Modal: FC<IModalProps> = ({ active, setActive, width, height, children }) 
   return (
     <div
       className={classNames(s.modal, { [s.active]: active })}
-      onClick={() => {
+      onMouseDown={() => {
         setActive(false)
       }}
     >
       <div
         className={classNames(s.modal__content, { [s.active]: active })}
         style={{ width: `${width}px`, height: `${height}px` }}
-        onClick={(event) => {
+        onMouseDown={(event) => {
           event.stopPropagation()
         }}
       >
