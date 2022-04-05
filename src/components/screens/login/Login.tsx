@@ -3,7 +3,7 @@ import StyledInput from 'components/shared/inputs/input/StyledInput'
 import s from './Login.module.scss'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import Checkbox from 'components/shared/checkboxes/Checkbox'
-import { login, logout } from 'store/thunks/authThunks'
+import { login } from 'store/thunks/authThunks'
 import { useAppDispatch } from 'hooks/redux'
 
 const Login = () => {
@@ -13,7 +13,7 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
   const onHandleClick = () => {
-    dispatch(login(username, pass))
+    dispatch(login(username, pass, isRemember))
   }
 
   return (

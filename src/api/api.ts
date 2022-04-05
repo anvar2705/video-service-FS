@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:4000'
+const BASE_URL = 'http://localhost:5000/api'
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -9,17 +9,20 @@ const instance = axios.create({
 
 export const authAPI = {
   registration(username: string, password: string) {
-    return instance.post('/auth/registration', { username, password })
+    return instance.post('/user/registration', { username, password })
   },
   login(username: string, password: string) {
-    return instance.post('/auth/login', { username, password })
+    return instance.post('/user/login', { username, password })
   },
   auth() {
-    return instance.get('/auth/auth', {
+    return instance.get('/user/auth', {
       headers: { Authorization: `Bearer ${window.localStorage.getItem('videoServiceToken')}` },
     })
   },
-  getUsers(username: string, password: string) {
-    return instance.get('/auth/users')
+}
+
+export const moviesAPI = {
+  getMovies() {
+    return instance.get('/movie')
   },
 }
