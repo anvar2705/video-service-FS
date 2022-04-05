@@ -1,5 +1,5 @@
 import React, { FC, SyntheticEvent } from 'react'
-import { ITabData } from 'components/constants/constants'
+import { ITabData } from 'constants/constants'
 import TabContent from './TabContent'
 import s from './Tabs.module.scss'
 import classNames from 'classnames'

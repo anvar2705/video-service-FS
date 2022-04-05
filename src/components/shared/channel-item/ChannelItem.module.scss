@@ -1,0 +1,47 @@
+@import 'src/assets/scss/variables.module';
+
+.channelItem {
+  display: flex;
+  height: 162px;
+  width: 98.5%;
+  background-color: $color-background;
+  border-radius: 8px;
+  margin-bottom: 16px;
+
+  &__logo {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 16%;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+
+    margin-top: 20px;
+    margin-bottom: 17px;
+  }
+  &__schedule {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+  }
+  &__scheduleItem {
+    margin-bottom: 12px;
+  }
+  &__scheduleItemTime {
+    margin-right: 16px;
+  }
+}
+
+.active {
+  color: $color-main;
+}
