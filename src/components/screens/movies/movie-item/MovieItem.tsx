@@ -11,7 +11,7 @@ const MovieItem: FC<IMovieItemProps> = ({ imageSrc, title, subtitle }) => {
   return (
     <div className={s.movieItem}>
       <div className={s.movieItem__image}>
-        <img src={imageSrc} alt={title} />
+        <img src={require(`assets/images/movie${imageSrc}.png`)} alt={title} />
       </div>
       <div className={s.movieItem__title}>{title}</div>
       <div className={s.movieItem__subtitle}>{subtitle}</div>

@@ -9,6 +9,6 @@ export interface ITabData {
 }
 
 export const TABS: Array<ITabData> = [
-  { title: 'Фильмы', content: <Movies moviesData={MOVIES} genresData={GENRES} /> },
+  { title: 'Фильмы', content: <Movies genresData={GENRES} /> },
   { title: 'Телеканалы', content: <Channels channelsData={CHANNELS} /> },
 ]

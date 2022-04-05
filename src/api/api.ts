@@ -21,7 +21,7 @@ export const authAPI = {
   },
 }
 
-export const moviesAPI = {
+export const movieAPI = {
   getMovies() {
     return instance.get('/movie')
   },

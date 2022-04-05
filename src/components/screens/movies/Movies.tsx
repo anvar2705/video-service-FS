@@ -1,26 +1,34 @@
-import React, { FC } from 'react'
-import { IGenreData, IMovieData } from '__mocks/mocks'
+import React, { FC, useEffect } from 'react'
+import { IGenreData } from '__mocks/mocks'
 import s from './Movies.module.scss'
-import MovieItem from 'components/shared/movie-item/MovieItem'
+import MovieItem from './movie-item/MovieItem'
 import Genre from 'components/shared/genre/Genre'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { getMovies } from 'store/thunks/movieThunks'
 
 interface IMoviesProps {
-  moviesData: Array<IMovieData>
   genresData: Array<IGenreData>
 }
 
-const Movies: FC<IMoviesProps> = ({ moviesData, genresData }) => {
+const Movies: FC<IMoviesProps> = ({ genresData }) => {
+  const { movies } = useAppSelector((state) => state.movieReducer)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getMovies())
+  }, [dispatch])
+
   return (
     <>
       <div className={s.title}>🔥 Новинки</div>
       <div className={s.movies}>
-        {moviesData.length !== 0 ? (
-          moviesData.map((item) => (
+        {movies.length !== 0 ? (
+          movies.map((movie) => (
             <MovieItem
-              imageSrc={item.imageSrc}
-              title={item.title}
-              subtitle={item.subtitle}
-              key={item.id}
+              imageSrc={movie.image}
+              title={movie.name}
+              subtitle={movie.description}
+              key={movie.id}
             />
           ))
         ) : (
