@@ -9,6 +9,11 @@
   justify-content: space-between;
   margin-bottom: 20px;
   min-height: 460px;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 .genres {
   display: flex;

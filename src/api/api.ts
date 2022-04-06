@@ -25,4 +25,7 @@ export const movieAPI = {
   getMovies() {
     return instance.get('/movie')
   },
+  getOneMovie(id: number) {
+    return instance.get(`/movie/?id=${id}`)
+  },
 }

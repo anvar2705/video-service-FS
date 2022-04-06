@@ -5,6 +5,7 @@ import MovieItem from './movie-item/MovieItem'
 import Genre from 'components/shared/genre/Genre'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { getMovies } from 'store/thunks/movieThunks'
+import { NavLink } from 'react-router-dom'
 
 interface IMoviesProps {
   genresData: Array<IGenreData>
@@ -15,8 +16,8 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getMovies())
-  }, [dispatch])
+    if (movies.length === 0) dispatch(getMovies())
+  }, [dispatch, movies])
 
   return (
     <>
@@ -24,12 +25,9 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
       <div className={s.movies}>
         {movies.length !== 0 ? (
           movies.map((movie) => (
-            <MovieItem
-              imageSrc={movie.image}
-              title={movie.name}
-              subtitle={movie.description}
-              key={movie.id}
-            />
+            <NavLink to={`/${movie.id}`} key={movie.id} className={s.movies__link}>
+              <MovieItem imageSrc={movie.image} title={movie.name} subtitle={movie.description} />
+            </NavLink>
           ))
         ) : (
           <span>Нет фильмов</span>
