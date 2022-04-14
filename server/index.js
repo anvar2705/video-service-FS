@@ -44,6 +44,7 @@ const start = async () => {
 
     // create default countries
     await createCountryMock('Россия')
+    await createCountryMock('Зимбабве')
     await createCountryMock('США')
     await createCountryMock('Китай')
     await createCountryMock('Великобритания')
@@ -53,7 +54,7 @@ const start = async () => {
       'Мульт в кино. Выпуск №103. Некогда грустить!',
       'В новом выпуске ми-ми-мишки изобретут машину сна, а Дракоша Тоша научит завязывать шнурки.',
       '1',
-      ['Россия'],
+      ['Россия', 'Зимбабве'],
       ['Детский', 'Мультфильм'],
       ['Неплохой фильм.', 'Я разочарован...', 'Всем советую глянуть!']
     )

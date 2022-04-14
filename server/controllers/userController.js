@@ -25,6 +25,7 @@ class UserController {
     const token = generateJwt(user.id, user.username, user.role)
     return res.json({ token })
   }
+
   async login(req, res, next) {
     const { username, password } = req.body
     const user = await User.findOne({ where: { username } })
@@ -36,13 +37,24 @@ class UserController {
       return next(ApiError.clientError(462, 'Wrong password'))
     }
     const token = generateJwt(user.id, user.username, user.role)
-    return res.json({ token, username: user.username })
+    return res.json({ token, username: user.username, id: user.id })
   }
+
   async checkAuth(req, res) {
     const { username } = req.user
     const user = await User.findOne({ where: { username } })
     const token = generateJwt(user.id, user.username, user.role)
-    return res.json({ token, username: user.username })
+    return res.json({ token, username: user.username, id: user.id })
+  }
+
+  async getUser(req, res) {
+    const { id } = req.query
+    if (!id) {
+      return res.json(null)
+    }
+    const user = await User.findOne({ where: { id } })
+    if (user) return res.json({ id: user.id, username: user.username })
+    return res.json(null)
   }
 }
 
