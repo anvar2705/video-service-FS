@@ -2,15 +2,15 @@
   width: 280px;
   height: 460px;
   position: relative;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 
   &:hover .movieItem__image img {
-    transition-duration: .3s;
-    opacity: .2;
+    transition-duration: 0.3s;
+    opacity: 0.2;
   }
 
-  &:hover .movieItem__subtitle {
-    transition-duration: .3s;
+  &:hover .movieItem__description {
+    transition-duration: 0.3s;
     display: block;
   }
 
@@ -24,13 +24,13 @@
       display: block;
       width: 100%;
       border-radius: 8px;
-      transition-duration: .3s;
+      transition-duration: 0.3s;
     }
   }
-  &__title {
+  &__name {
     font-size: 20px;
   }
-  &__subtitle {
+  &__description {
     display: none;
     box-sizing: border-box;
     width: 100%;
@@ -44,5 +44,6 @@
     left: 0;
 
     pointer-events: none;
+    transition-duration: 0.3s;
   }
 }

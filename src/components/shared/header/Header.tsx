@@ -7,6 +7,7 @@ import Search from 'components/shared/inputs/search/Search'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import { logout } from 'store/thunks/authThunks'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   const { isAuth, username, isModalActive } = useAppSelector((state) => state.uiReducer)
@@ -37,7 +38,9 @@ const Header = () => {
           marginBottom: '48px',
         }}
       >
-        <Logo />
+        <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Logo />
+        </NavLink>
         <Search onSubmit={onSubmit} />
         {isAuth ? (
           <div>

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import logoFooter from 'assets/images/logo-footer.svg'
+import logoFooter from 'assets/images/logoFooter.svg'
 import s from './Footer.module.scss'
 
 interface IFooterProps {

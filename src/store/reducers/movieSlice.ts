@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IMovie } from 'models/models'
+import { IComment, IMovie } from 'models/models'
 
 interface IMovieState {
   movies: Array<IMovie>
@@ -28,9 +28,18 @@ const movieSlice = createSlice({
     },
     setOneMovie: (state, action: PayloadAction<IMovie>) => {
       state.movie = action.payload
+      state.movie.comments.sort((a, b) => b.id - a.id)
+    },
+    addComment: (state, action: PayloadAction<IComment>) => {
+      state.movie.comments.unshift(action.payload)
+    },
+    deleteComment: (state, action: PayloadAction<IComment>) => {
+      const id = action.payload.id
+      const index = state.movie.comments.findIndex((comment) => comment.id === id)
+      state.movie.comments.splice(index, 1)
     },
   },
 })
 
 export default movieSlice.reducer
-export const { setMovies, setOneMovie } = movieSlice.actions
+export const { setMovies, setOneMovie, addComment, deleteComment } = movieSlice.actions

@@ -1,25 +1,58 @@
 import { AppDispatch } from '../store'
-import { movieAPI } from 'api/api'
-import { setMovies, setOneMovie } from '../reducers/movieSlice'
+import { API } from 'api/api'
+import { addComment, deleteComment, setMovies, setOneMovie } from '../reducers/movieSlice'
+import { setIsLoading } from 'store/reducers/uiSlice'
+import { popupErrorCommon } from 'components/shared/pop-ups/PopUps'
 
-export const getMovies = () => async (dispatch: AppDispatch) => {
+export const getMoviesThunk = () => async (dispatch: AppDispatch) => {
   try {
-    const response = await movieAPI.getMovies()
+    dispatch(setIsLoading(true))
+    const response = await API.getMovies()
     if (response.data) {
       dispatch(setMovies(response.data))
+      dispatch(setIsLoading(false))
     }
-  } catch (e) {
+  } catch (e: any) {
+    popupErrorCommon(e, e.response.data.message)
     console.log(e)
   }
 }
 
-export const getOneMovie = (id: number) => async (dispatch: AppDispatch) => {
+export const getOneMovieThunk = (id: number) => async (dispatch: AppDispatch) => {
   try {
-    const response = await movieAPI.getOneMovie(id)
+    dispatch(setIsLoading(true))
+    const response = await API.getOneMovie(id)
     if (response.data) {
       dispatch(setOneMovie(response.data))
+      dispatch(setIsLoading(false))
     }
-  } catch (e) {
+  } catch (e: any) {
+    popupErrorCommon(e, e.response.data.message)
+    console.log(e)
+  }
+}
+
+export const postCommentThunk =
+  (commentValue: string, movieId: number) => async (dispatch: AppDispatch) => {
+    try {
+      const response = await API.postComment(commentValue, movieId)
+      if (response.data) {
+        dispatch(addComment(response.data))
+      }
+    } catch (e: any) {
+      popupErrorCommon(e, e.response.data.message)
+      console.log(e)
+    }
+  }
+
+export const deleteCommentThunk = (commentId: number) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await API.deleteComment(commentId)
+    if (response.data) {
+      dispatch(deleteComment(response.data))
+    }
+  } catch (e: any) {
+    popupErrorCommon(e, e.response.data.message)
     console.log(e)
   }
 }

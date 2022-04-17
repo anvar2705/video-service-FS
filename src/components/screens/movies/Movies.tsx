@@ -4,7 +4,7 @@ import s from './Movies.module.scss'
 import MovieItem from './movie-item/MovieItem'
 import Genre from 'components/shared/genre/Genre'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getMovies } from 'store/thunks/movieThunks'
+import { getMoviesThunk } from 'store/thunks/movieThunks'
 import { NavLink } from 'react-router-dom'
 
 interface IMoviesProps {
@@ -16,7 +16,7 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (movies.length === 0) dispatch(getMovies())
+    if (movies.length === 0) dispatch(getMoviesThunk())
   }, [dispatch, movies])
 
   return (
@@ -26,7 +26,7 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
         {movies.length !== 0 ? (
           movies.map((movie) => (
             <NavLink to={`/${movie.id}`} key={movie.id} className={s.movies__link}>
-              <MovieItem imageSrc={movie.image} title={movie.name} subtitle={movie.description} />
+              <MovieItem imageSrc={movie.image} name={movie.name} description={movie.description} />
             </NavLink>
           ))
         ) : (
