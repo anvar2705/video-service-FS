@@ -1,6 +1,5 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import Modal from 'components/shared/modal/Modal'
-import { setIsModalActive } from 'store/reducers/uiSlice'
 import Login from 'components/screens/login/Login'
 import Logo from 'components/shared/logo/Logo'
 import Search from 'components/shared/inputs/search/Search'
@@ -8,26 +7,35 @@ import StyledButton from 'components/shared/buttons/StyledButton'
 import { logout } from 'store/thunks/authThunks'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { NavLink } from 'react-router-dom'
+import ChangeUsername from 'components/screens/change-username/ChangeUsername'
 
 const Header = () => {
-  const { isAuth, username, isModalActive } = useAppSelector((state) => state.uiReducer)
+  const [isModalLoginActive, setIsModalLoginActive] = useState(false)
+  const [isModalChangeUsernameActive, setIsModalChangeUsernameActive] = useState(false)
+  const { isAuth, username } = useAppSelector((state) => state.uiReducer)
   const dispatch = useAppDispatch()
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>, value: string) => {
+  useEffect(() => {
+    if (isAuth) setIsModalLoginActive(false)
+    if (username) setIsModalChangeUsernameActive(false)
+  }, [isAuth, username])
+
+  const onSubmitSearch = (event: FormEvent<HTMLFormElement>, value: string) => {
     console.log(value)
   }
 
   return (
     <div>
+      <Modal active={isModalLoginActive} setActive={setIsModalLoginActive} width={304} height={394}>
+        <Login />
+      </Modal>
       <Modal
-        active={isModalActive}
-        setActive={(status: boolean) => {
-          dispatch(setIsModalActive(status))
-        }}
+        active={isModalChangeUsernameActive}
+        setActive={setIsModalChangeUsernameActive}
         width={304}
         height={394}
       >
-        <Login />
+        <ChangeUsername />
       </Modal>
       <div
         style={{
@@ -41,7 +49,7 @@ const Header = () => {
         <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
           <Logo />
         </NavLink>
-        <Search onSubmit={onSubmit} />
+        <Search onSubmit={onSubmitSearch} />
         {isAuth ? (
           <div>
             <span
@@ -49,7 +57,9 @@ const Header = () => {
                 fontSize: '16px',
                 fontWeight: 500,
                 lineHeight: '19px',
+                cursor: 'pointer',
               }}
+              onClick={() => setIsModalChangeUsernameActive(true)}
             >
               {username}
             </span>
@@ -65,7 +75,7 @@ const Header = () => {
         ) : (
           <StyledButton
             onClick={() => {
-              dispatch(setIsModalActive(true))
+              setIsModalLoginActive(true)
             }}
           >
             Войти

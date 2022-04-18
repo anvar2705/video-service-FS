@@ -6,7 +6,6 @@ interface uiState {
   isAuth: boolean
   isLoading: boolean
   error: any
-  isModalActive: boolean
 }
 
 const initialState: uiState = {
@@ -15,7 +14,6 @@ const initialState: uiState = {
   isAuth: false,
   isLoading: false,
   error: {},
-  isModalActive: false,
 }
 
 const uiSlice = createSlice({
@@ -37,12 +35,8 @@ const uiSlice = createSlice({
     setError: (state, action: PayloadAction<any>) => {
       state.error = action.payload
     },
-    setIsModalActive: (state, action: PayloadAction<boolean>) => {
-      state.isModalActive = action.payload
-    },
   },
 })
 
 export default uiSlice.reducer
-export const { setUserId, setUsername, setIsAuth, setIsLoading, setError, setIsModalActive } =
-  uiSlice.actions
+export const { setUserId, setUsername, setIsAuth, setIsLoading, setError } = uiSlice.actions

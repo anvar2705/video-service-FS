@@ -1,12 +1,6 @@
 import { AppDispatch } from 'store/store'
 import { API } from 'api/api'
-import {
-  setError,
-  setIsAuth,
-  setIsModalActive,
-  setUserId,
-  setUsername,
-} from 'store/reducers/uiSlice'
+import { setError, setIsAuth, setUserId, setUsername } from 'store/reducers/uiSlice'
 import { popupErrorCommon } from 'components/shared/pop-ups/PopUps'
 
 export const login =
@@ -17,7 +11,6 @@ export const login =
         dispatch(setUserId(response.data.id))
         dispatch(setUsername(response.data.username))
         dispatch(setIsAuth(true))
-        dispatch(setIsModalActive(false))
         if (isRemember) window.localStorage.setItem('videoServiceToken', response.data.token)
         dispatch(setError({}))
       }
@@ -37,7 +30,6 @@ export const auth = () => async (dispatch: AppDispatch) => {
         dispatch(setUserId(response.data.id))
         dispatch(setUsername(response.data.username))
         dispatch(setIsAuth(true))
-        dispatch(setIsModalActive(false))
         window.localStorage.setItem('videoServiceToken', response.data.token)
         dispatch(setError({}))
       }
@@ -55,4 +47,20 @@ export const logout = () => (dispatch: AppDispatch) => {
   dispatch(setUsername(''))
   dispatch(setIsAuth(false))
   window.localStorage.removeItem('videoServiceToken')
+}
+
+export const changeUsername = (username: string) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await API.changeUsername(username)
+    if (response.data) {
+      dispatch(setUserId(response.data.id))
+      dispatch(setUsername(response.data.username))
+      window.localStorage.setItem('videoServiceToken', response.data.token)
+      dispatch(setError({}))
+    }
+  } catch (e: any) {
+    console.log(e)
+    dispatch(setError(e.response.data))
+    popupErrorCommon(e, e.response.data.message)
+  }
 }

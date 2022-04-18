@@ -25,6 +25,15 @@ export const API = {
   getUsername(userId: number) {
     return instance.get(`/user?id=${userId}`)
   },
+  changeUsername(username: string) {
+    return instance.post(
+      `/user`,
+      { username },
+      {
+        headers: { Authorization: `Bearer ${window.localStorage.getItem('videoServiceToken')}` },
+      }
+    )
+  },
   getMovies() {
     return instance.get('/movie')
   },
