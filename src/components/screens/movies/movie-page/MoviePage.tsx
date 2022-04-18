@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ICountry, IGenre } from 'models/models'
-import Comment from 'components/screens/movies/movie-page/comment/Comment'
+import Comment from 'components/screens/movies/movie-page/Comment'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import StyledInputComment from 'components/shared/inputs/inputComment/StyledInputComment'
@@ -68,9 +68,7 @@ const MoviePage = () => {
                   onChange={(event) => setCommentValue(event.target.value)}
                   className={s.comments__input}
                 />
-                <StyledButton onClick={onPostComment} className={s.comments__inputBtn}>
-                  Опубликовать
-                </StyledButton>
+                <StyledButton onClick={onPostComment}>Опубликовать</StyledButton>
               </div>
             ) : null}
             {movie.comments.map((comment) => (

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import s from './MovieItem.module.scss'
+import s from '../Movies.module.scss'
 
 interface IMovieItemProps {
   imageSrc: string

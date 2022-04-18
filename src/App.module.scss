@@ -1,0 +1,19 @@
+@import 'assets/scss/variables.module';
+
+.App {
+  margin: 0 auto;
+  max-width: 1180px;
+
+  @media (max-width: $screen-l-max) {
+    max-width: 960px;
+  }
+  @media (max-width: $screen-m-max) {
+    max-width: 700px;
+  }
+  @media (max-width: $screen-s-max) {
+    max-width: 450px;
+  }
+  @media (max-width: $screen-xs-max) {
+    max-width: 290px;
+  }
+}
