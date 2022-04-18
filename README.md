@@ -23,3 +23,17 @@ Start client application:
 
 Run the application only after the server has started!
 Server runs on the port 5000 by default.
+
+### USERS accounts:
+
+login: admin
+pass: admin123
+
+login: user
+pass: user123
+
+login: Anvar
+pass: anvar123
+
+
+
