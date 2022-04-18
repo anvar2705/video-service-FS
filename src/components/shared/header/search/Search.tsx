@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react'
 import StyledButton from 'components/shared/buttons/StyledButton'
-import StyledInput from '../input/StyledInput'
+import StyledInput from 'components/shared/inputs/input/StyledInput'
+import s from '../Header.module.scss'
 
 interface ISearchProps {
   onSubmit: (event: FormEvent<HTMLFormElement>, value: string) => void
@@ -21,18 +22,10 @@ const Search: FC<ISearchProps> = ({ onSubmit, placeholder = 'Поиск...', ...
         event.preventDefault()
         onSubmit(event, value)
       }}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
+      className={s.header__search}
       {...props}
     >
-      <StyledInput
-        value={value}
-        onChange={onHandleChange}
-        placeholder={placeholder}
-        style={{ width: '320px' }}
-      />
+      <StyledInput value={value} onChange={onHandleChange} placeholder={placeholder} />
       <StyledButton type='submit' color='secondary'>
         Найти
       </StyledButton>

@@ -25,6 +25,7 @@ class UserController {
     const token = generateJwt(user.id, user.username, user.role)
     return res.json({ token })
   }
+
   async login(req, res, next) {
     const { username, password } = req.body
     const user = await User.findOne({ where: { username } })
@@ -36,13 +37,43 @@ class UserController {
       return next(ApiError.clientError(462, 'Wrong password'))
     }
     const token = generateJwt(user.id, user.username, user.role)
-    return res.json({ token, username: user.username })
+    return res.json({ token, username: user.username, id: user.id })
   }
+
   async checkAuth(req, res) {
     const { username } = req.user
     const user = await User.findOne({ where: { username } })
     const token = generateJwt(user.id, user.username, user.role)
-    return res.json({ token, username: user.username })
+    return res.json({ token, username: user.username, id: user.id })
+  }
+
+  async getUser(req, res, next) {
+    const { id } = req.query
+    if (!id) {
+      return next(ApiError.clientError(464, 'There is not id in query'))
+    }
+    const user = await User.findOne({ where: { id } })
+    if (!user) {
+      return next(ApiError.clientError(461, 'User does not exist'))
+    }
+    return res.json({ id: user.id, username: user.username })
+  }
+
+  async changeUsername(req, res, next) {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ message: 'Request body is wrong', errors })
+    }
+    const { id } = req.user
+    const { username } = req.body
+    const checkDuplicateUsernames = await User.findOne({ where: { username } })
+    if (checkDuplicateUsernames) {
+      return next(ApiError.clientError(460, 'The username is already taken'))
+    }
+    await User.update({ username }, { where: { id } })
+    const user = await User.findOne({ where: { id } })
+    const token = generateJwt(user.id, user.username, user.role)
+    return res.json({ id: user.id, username: user.username, token })
   }
 }
 

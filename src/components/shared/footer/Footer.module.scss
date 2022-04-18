@@ -1,24 +1,44 @@
-.footer {
-  height: 120px;
-  background-color: #F2F2F2;
-  display: flex;
-  box-sizing: border-box;
+@import 'assets/scss/variables.module';
 
-  &__logo {
-    height: 64px;
-    padding-top: 6px;
-    margin-right: 40px;
-  }
-  &__title {
-    &_address {
-      margin-bottom: 6px;
+.footerWrapper {
+  width: 100%;
+  background-color: #f2f2f2;
+  .footer {
+    height: 120px;
+    display: flex;
+    box-sizing: border-box;
+    max-width: 1180px;
+    margin: 0 auto;
+
+    @media (max-width: $screen-l-max) {
+      max-width: 960px;
     }
-    &_phone {
-      margin-bottom: 10px;
+    @media (max-width: $screen-m-max) {
+      max-width: 700px;
     }
-    &_url {
-      font-weight: 500;
-      color: #1F4766;
+    @media (max-width: $screen-s-max) {
+      max-width: 450px;
+    }
+    @media (max-width: $screen-xs-max) {
+      max-width: 290px;
+    }
+
+    &__logo {
+      height: 64px;
+      padding-top: 6px;
+      margin-right: 40px;
+    }
+    &__title {
+      &_address {
+        margin-bottom: 6px;
+      }
+      &_phone {
+        margin-bottom: 10px;
+      }
+      &_url {
+        font-weight: 500;
+        color: #1f4766;
+      }
     }
   }
 }

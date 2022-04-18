@@ -1,27 +1,33 @@
-import React, { FC } from 'react'
-import { IGenreData, IMovieData } from '__mocks/mocks'
+import React, { FC, useEffect } from 'react'
+import { IGenreData } from '__mocks/mocks'
 import s from './Movies.module.scss'
-import MovieItem from 'components/shared/movie-item/MovieItem'
-import Genre from 'components/shared/genre/Genre'
+import MovieItem from './movie-item/MovieItem'
+import Genre from 'components/screens/movies/genre/Genre'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { getMoviesThunk } from 'store/thunks/movieThunks'
+import { NavLink } from 'react-router-dom'
 
 interface IMoviesProps {
-  moviesData: Array<IMovieData>
   genresData: Array<IGenreData>
 }
 
-const Movies: FC<IMoviesProps> = ({ moviesData, genresData }) => {
+const Movies: FC<IMoviesProps> = ({ genresData }) => {
+  const { movies } = useAppSelector((state) => state.movieReducer)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (movies.length === 0) dispatch(getMoviesThunk())
+  }, [dispatch])
+
   return (
     <>
       <div className={s.title}>🔥 Новинки</div>
       <div className={s.movies}>
-        {moviesData.length !== 0 ? (
-          moviesData.map((item) => (
-            <MovieItem
-              imageSrc={item.imageSrc}
-              title={item.title}
-              subtitle={item.subtitle}
-              key={item.id}
-            />
+        {movies.length !== 0 ? (
+          movies.map((movie) => (
+            <NavLink to={`/${movie.id}`} key={movie.id} className={s.movies__link}>
+              <MovieItem imageSrc={movie.image} name={movie.name} description={movie.description} />
+            </NavLink>
           ))
         ) : (
           <span>Нет фильмов</span>

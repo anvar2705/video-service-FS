@@ -1,11 +1,15 @@
-import React, { FC, SyntheticEvent } from 'react'
-import { ITabData } from 'constants/constants'
+import React, { FC, ReactNode, SyntheticEvent } from 'react'
 import TabContent from './TabContent'
 import s from './Tabs.module.scss'
 import classNames from 'classnames'
 
 interface ITabsProps {
   items: Array<ITabData>
+}
+
+export interface ITabData {
+  title: string
+  content: ReactNode
 }
 
 const Tabs: FC<ITabsProps> = ({ items }) => {

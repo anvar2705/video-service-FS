@@ -8,8 +8,8 @@ const myTheme: DefaultTheme = {
       dark: scss.colorMainDark,
     },
     secondary: {
-      main: 'transparent',
-      dark: 'transparent',
+      main: scss.colorSecondary,
+      dark: scss.colorSecondaryDark,
     },
   },
 }

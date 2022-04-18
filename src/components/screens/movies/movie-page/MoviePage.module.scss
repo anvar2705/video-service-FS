@@ -1,0 +1,146 @@
+@import 'assets/scss/variables.module';
+
+.moviePageContainer {
+  position: relative;
+  &__goBackIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+}
+
+.movie {
+  display: flex;
+  margin-left: 100px;
+  margin-bottom: 48px;
+
+  @media (max-width: $screen-l-max) {
+    margin-left: 70px;
+  }
+  @media (max-width: $screen-m-max) {
+    margin-left: 30px;
+  }
+  @media (max-width: $screen-s-max) {
+    flex-direction: column;
+  }
+
+  &__image {
+    width: 280px;
+    margin-right: 120px;
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    @media (max-width: $screen-l-max) {
+      margin-right: 50px;
+    }
+    @media (max-width: $screen-m-max) {
+      margin-right: 30px;
+    }
+    @media (max-width: $screen-s-max) {
+      margin: 0 auto 20px;
+    }
+    @media (max-width: $screen-xs-max) {
+      width: 250px;
+    }
+  }
+}
+
+.movieInfoItem {
+  display: flex;
+  margin-bottom: 16px;
+
+  @media (max-width: $screen-xs-max) {
+    flex-direction: column;
+  }
+
+  &__title {
+    width: 104px;
+    flex-shrink: 0;
+  }
+  &__subtitle {
+    max-width: 480px;
+    width: 100%;
+    font-size: 20px;
+  }
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 200px;
+
+  @media (max-width: $screen-l-max) {
+    margin: 0 160px;
+  }
+  @media (max-width: $screen-m-max) {
+    align-items: start;
+    margin: 0 160px 0 0;
+  }
+  @media (max-width: $screen-s-max) {
+    align-items: start;
+    margin: 0 50px 0 0;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  &__inputWrapper {
+    width: 100%;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  &__input {
+    height: 110px;
+  }
+  button {
+    height: 38px;
+    width: 174px;
+    position: absolute;
+    top: 0;
+    right: -190px;
+
+    @media (max-width: $screen-l-max) {
+      width: 140px;
+      right: -150px;
+      padding: 8px 8px;
+    }
+    @media (max-width: $screen-s-max) {
+      position: relative;
+      top: 0;
+      right: 0;
+      width: 100%;
+      margin-top: 5px;
+    }
+  }
+
+  &__item {
+    background-color: $color-background;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  &__username {
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  &__deleteIcon {
+    position: absolute;
+    top: 0;
+    right: -32px;
+    cursor: pointer;
+
+    @media (max-width: $screen-s-max) {
+      right: -22px;
+    }
+  }
+}
