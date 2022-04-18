@@ -19,7 +19,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     if (id) dispatch(getOneMovieThunk(Number(id)))
-  }, [id])
+  }, [id, dispatch])
 
   const onPostComment = async () => {
     dispatch(postCommentThunk(commentValue, movie.id))

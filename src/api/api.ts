@@ -38,7 +38,10 @@ export const API = {
     return instance.get('/movie')
   },
   getOneMovie(id: number) {
-    return instance.get(`/movie/?id=${id}`)
+    return instance.get(`/movie?id=${id}`)
+  },
+  searchMovie(name: string) {
+    return instance.get(`/movie?search=${name}`)
   },
   postComment(commentValue: string, movieId: number) {
     return instance.post(

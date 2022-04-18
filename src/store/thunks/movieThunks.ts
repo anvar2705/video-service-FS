@@ -4,10 +4,12 @@ import { addComment, deleteComment, setMovies, setOneMovie } from '../reducers/m
 import { setIsLoading } from 'store/reducers/uiSlice'
 import { popupErrorCommon } from 'components/shared/pop-ups/PopUps'
 
-export const getMoviesThunk = () => async (dispatch: AppDispatch) => {
+export const getMoviesThunk = (searchValue?: string) => async (dispatch: AppDispatch) => {
   try {
     dispatch(setIsLoading(true))
-    const response = await API.getMovies()
+    let response
+    if (searchValue) response = await API.searchMovie(searchValue)
+    else response = await API.getMovies()
     if (response.data) {
       dispatch(setMovies(response.data))
       dispatch(setIsLoading(false))

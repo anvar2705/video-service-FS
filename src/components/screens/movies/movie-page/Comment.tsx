@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
 import { IComment } from 'models/models'
-import scss from 'assets/scss/variables.module.scss'
 import { API } from 'api/api'
 import { ReactComponent as DeleteIcon } from 'assets/images/deleteIcon.svg'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'

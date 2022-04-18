@@ -6,9 +6,10 @@ import Search from 'components/shared/header/search/Search'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import { changeUsername, logout } from 'store/thunks/authThunks'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import StyledInput from 'components/shared/inputs/input/StyledInput'
 import s from './Header.module.scss'
+import { getMoviesThunk } from 'store/thunks/movieThunks'
 
 const Header = () => {
   const [isModalLoginActive, setIsModalLoginActive] = useState(false)
@@ -16,6 +17,7 @@ const Header = () => {
   const { isAuth, username } = useAppSelector((state) => state.uiReducer)
   const [usernameInput, setUsernameInput] = useState(username ?? '')
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isAuth) setIsModalLoginActive(false)
@@ -26,7 +28,8 @@ const Header = () => {
   }, [username])
 
   const onSubmitSearch = (event: FormEvent<HTMLFormElement>, value: string) => {
-    console.log(value)
+    navigate('/')
+    dispatch(getMoviesThunk(value))
   }
 
   return (

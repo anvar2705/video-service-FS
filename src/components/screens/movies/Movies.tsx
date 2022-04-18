@@ -17,7 +17,7 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
 
   useEffect(() => {
     if (movies.length === 0) dispatch(getMoviesThunk())
-  }, [dispatch, movies])
+  }, [dispatch])
 
   return (
     <>
