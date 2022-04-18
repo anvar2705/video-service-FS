@@ -4,38 +4,34 @@ import Login from 'components/screens/login/Login'
 import Logo from 'components/shared/logo/Logo'
 import Search from 'components/shared/inputs/search/Search'
 import StyledButton from 'components/shared/buttons/StyledButton'
-import { logout } from 'store/thunks/authThunks'
+import { changeUsername, logout } from 'store/thunks/authThunks'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { NavLink } from 'react-router-dom'
-import ChangeUsername from 'components/screens/change-username/ChangeUsername'
+import StyledInput from 'components/shared/inputs/input/StyledInput'
 
 const Header = () => {
   const [isModalLoginActive, setIsModalLoginActive] = useState(false)
-  const [isModalChangeUsernameActive, setIsModalChangeUsernameActive] = useState(false)
+  const [isEditUsername, setIsEditUsername] = useState(false)
   const { isAuth, username } = useAppSelector((state) => state.uiReducer)
+  const [usernameInput, setUsernameInput] = useState(username ?? '')
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (isAuth) setIsModalLoginActive(false)
-    if (username) setIsModalChangeUsernameActive(false)
-  }, [isAuth, username])
+  }, [isAuth])
+
+  useEffect(() => {
+    setUsernameInput(username)
+  }, [username])
 
   const onSubmitSearch = (event: FormEvent<HTMLFormElement>, value: string) => {
     console.log(value)
   }
 
   return (
-    <div>
+    <>
       <Modal active={isModalLoginActive} setActive={setIsModalLoginActive} width={304} height={394}>
         <Login />
-      </Modal>
-      <Modal
-        active={isModalChangeUsernameActive}
-        setActive={setIsModalChangeUsernameActive}
-        width={304}
-        height={394}
-      >
-        <ChangeUsername />
       </Modal>
       <div
         style={{
@@ -51,18 +47,32 @@ const Header = () => {
         </NavLink>
         <Search onSubmit={onSubmitSearch} />
         {isAuth ? (
-          <div>
-            <span
-              style={{
-                fontSize: '16px',
-                fontWeight: 500,
-                lineHeight: '19px',
-                cursor: 'pointer',
-              }}
-              onClick={() => setIsModalChangeUsernameActive(true)}
-            >
-              {username}
-            </span>
+          <div
+            style={{ width: '220px', display: 'flex', justifyContent: 'end', alignItems: 'center' }}
+          >
+            {isEditUsername ? (
+              <StyledInput
+                value={usernameInput}
+                onChange={(event) => setUsernameInput(event.target.value)}
+                autoFocus={true}
+                onBlur={() => {
+                  setIsEditUsername(false)
+                  if (username !== usernameInput) dispatch(changeUsername(usernameInput))
+                }}
+              />
+            ) : (
+              <span
+                style={{
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  lineHeight: '19px',
+                  cursor: 'pointer',
+                }}
+                onClick={() => setIsEditUsername(true)}
+              >
+                {username}
+              </span>
+            )}
             <StyledButton
               color='secondary'
               onClick={() => {
@@ -82,7 +92,7 @@ const Header = () => {
           </StyledButton>
         )}
       </div>
-    </div>
+    </>
   )
 }
 

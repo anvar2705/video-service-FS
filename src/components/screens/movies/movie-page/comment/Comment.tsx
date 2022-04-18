@@ -22,6 +22,10 @@ const Comment: FC<{ comment: IComment }> = ({ comment }) => {
     }
 
     getUsername(comment.userId)
+
+    return () => {
+      setUsername('')
+    }
   }, [comment])
 
   const onDeleteComment = () => {
