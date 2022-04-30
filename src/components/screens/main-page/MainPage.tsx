@@ -1,8 +1,8 @@
 import React from 'react'
-import Tabs from 'components/shared/tabs/Tabs'
-import Movies from '../movies/Movies'
+import Tabs from 'components/ui/tabs/Tabs'
+import Movies from 'components/screens/movies/Movies'
 import { CHANNELS, GENRES } from '__mocks/mocks'
-import Channels from '../channels/Channels'
+import Channels from 'components/screens/channels/Channels'
 
 const MainPage = () => {
   return (

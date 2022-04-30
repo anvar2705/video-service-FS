@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react'
-import StyledButton from 'components/shared/buttons/StyledButton'
-import StyledInput from 'components/shared/inputs/input/StyledInput'
-import s from 'components/shared/header/Header.module.scss'
+import StyledButton from 'components/ui/buttons/StyledButton'
+import StyledInput from 'components/ui/inputs/input/StyledInput'
+import s from 'components/ui/header/Header.module.scss'
 
 interface ISearchProps {
   onSubmit: (event: FormEvent<HTMLFormElement>, value: string) => void

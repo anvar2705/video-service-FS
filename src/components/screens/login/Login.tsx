@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import StyledInput from 'components/shared/inputs/input/StyledInput'
-import Checkbox from 'components/shared/checkboxes/Checkbox'
+import StyledInput from 'components/ui/inputs/input/StyledInput'
+import Checkbox from 'components/ui/checkboxes/Checkbox'
 import { login } from 'store/thunks/authThunks'
 import { useAppDispatch } from 'hooks/redux'
-import ModalStyledWindow from 'components/shared/modal-styled-window/ModalStyledWindow'
+import ModalStyledWindow from 'components/ui/modal-styled-window/ModalStyledWindow'
 
 const Login = () => {
   const [username, setUsername] = useState('')

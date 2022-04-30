@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-import StyledButton from 'components/shared/buttons/StyledButton'
+import StyledButton from 'components/ui/buttons/StyledButton'
 
 interface IModalStyledWindowProps {
   title: string

@@ -1,7 +1,7 @@
 import { AppDispatch } from 'store/store'
 import { API } from 'api/api'
 import { setError, setIsAuth, setUserId, setUsername } from 'store/reducers/uiSlice'
-import { popupErrorCommon } from 'components/shared/pop-ups/PopUps'
+import { popupErrorCommon } from 'components/ui/pop-ups/PopUps'
 
 export const login =
   (username: string, password: string, isRemember: boolean) => async (dispatch: AppDispatch) => {
@@ -15,9 +15,8 @@ export const login =
         dispatch(setError({}))
       }
     } catch (e: any) {
-      console.log(e)
       dispatch(setError(e.response.data))
-      popupErrorCommon(e, e.response.data.message)
+      return popupErrorCommon(e, e.response.data.message)
     }
   }
 
@@ -34,10 +33,9 @@ export const auth = () => async (dispatch: AppDispatch) => {
         dispatch(setError({}))
       }
     } catch (e: any) {
-      console.log(e)
       dispatch(setError(e.response.data))
       window.localStorage.removeItem('videoServiceToken')
-      popupErrorCommon(e, e.response.data.message)
+      return popupErrorCommon(e, e.response.data.message)
     }
   }
 }
@@ -59,8 +57,7 @@ export const changeUsername = (username: string) => async (dispatch: AppDispatch
       dispatch(setError({}))
     }
   } catch (e: any) {
-    console.log(e)
     dispatch(setError(e.response.data))
-    popupErrorCommon(e, e.response.data.message)
+    return popupErrorCommon(e, e.response.data.message)
   }
 }

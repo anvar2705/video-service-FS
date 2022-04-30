@@ -2,7 +2,7 @@ import { AppDispatch } from '../store'
 import { API } from 'api/api'
 import { addComment, deleteComment, setMovies, setOneMovie } from '../reducers/movieSlice'
 import { setIsLoading } from 'store/reducers/uiSlice'
-import { popupErrorCommon } from 'components/shared/pop-ups/PopUps'
+import { popupErrorCommon } from 'components/ui/pop-ups/PopUps'
 
 export const getMoviesThunk = (searchValue?: string) => async (dispatch: AppDispatch) => {
   try {
@@ -15,8 +15,7 @@ export const getMoviesThunk = (searchValue?: string) => async (dispatch: AppDisp
       dispatch(setIsLoading(false))
     }
   } catch (e: any) {
-    popupErrorCommon(e, e.response.data.message)
-    console.log(e)
+    return popupErrorCommon(e, e.response.data.message)
   }
 }
 
@@ -29,8 +28,7 @@ export const getOneMovieThunk = (id: number) => async (dispatch: AppDispatch) =>
       dispatch(setIsLoading(false))
     }
   } catch (e: any) {
-    popupErrorCommon(e, e.response.data.message)
-    console.log(e)
+    return popupErrorCommon(e, e.response.data.message)
   }
 }
 
@@ -42,8 +40,7 @@ export const postCommentThunk =
         dispatch(addComment(response.data))
       }
     } catch (e: any) {
-      popupErrorCommon(e, e.response.data.message)
-      console.log(e)
+      return popupErrorCommon(e, e.response.data.message)
     }
   }
 
@@ -54,7 +51,6 @@ export const deleteCommentThunk = (commentId: number) => async (dispatch: AppDis
       dispatch(deleteComment(response.data))
     }
   } catch (e: any) {
-    popupErrorCommon(e, e.response.data.message)
-    console.log(e)
+    return popupErrorCommon(e, e.response.data.message)
   }
 }

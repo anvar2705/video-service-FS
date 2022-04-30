@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+
 interface IGenreProps {
   image: string
   title: string
