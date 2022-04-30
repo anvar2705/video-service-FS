@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import { IChannelsData } from '__mocks/mocks'
 import ChannelItem from 'components/screens/channels/channel-item/ChannelItem'
-import SimpleBar from 'simplebar-react'
-import 'simplebar/dist/simplebar.min.css'
+import CustomScrollbarCSS from 'components/ui/scrollbars/CustomScrollbarCSS'
 
 interface IChannelsProps {
   channelsData: Array<IChannelsData>
@@ -10,7 +9,7 @@ interface IChannelsProps {
 
 const Channels: FC<IChannelsProps> = ({ channelsData }) => {
   return (
-    <SimpleBar style={{ height: '696px', marginBottom: '72px' }}>
+    <CustomScrollbarCSS height={696} style={{ marginBottom: '72px' }}>
       {channelsData.map((item) => (
         <ChannelItem
           key={item.id}
@@ -20,7 +19,7 @@ const Channels: FC<IChannelsProps> = ({ channelsData }) => {
           schedule={item.schedule}
         />
       ))}
-    </SimpleBar>
+    </CustomScrollbarCSS>
   )
 }
 
