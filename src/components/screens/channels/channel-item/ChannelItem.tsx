@@ -5,19 +5,19 @@ import classNames from 'classnames'
 
 const ChannelItem: FC<IChannelsData> = ({ title, imageSrc, schedule }) => {
   return (
-    <div className={s.channelItem}>
-      <div className={s.channelItem__logo}>
+    <div className={s.root}>
+      <div className={s.logo}>
         <img src={imageSrc} alt={`${title}-logo`} />
       </div>
-      <div className={s.channelItem__info}>
-        <div className={s.channelItem__title}>{title}</div>
-        <div className={s.channelItem__schedule}>
+      <div className={s.info}>
+        <div className={s.title}>{title}</div>
+        <div className={s.schedule}>
           {schedule.map((item) => (
             <div
               key={item.id}
-              className={classNames(s.channelItem__scheduleItem, { [s.active]: item.id === 0 })}
+              className={classNames(s.scheduleItem, { [s.active]: item.id === 0 })}
             >
-              <span className={s.channelItem__scheduleItemTime}>{item.time}</span>
+              <span className={s.scheduleItemTime}>{item.time}</span>
               <span>{item.title}</span>
             </div>
           ))}

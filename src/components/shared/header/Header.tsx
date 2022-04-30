@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useState } from 'react'
 import Modal from 'components/shared/modal/Modal'
 import Login from 'components/screens/login/Login'
 import Logo from 'components/shared/logo/Logo'
-import Search from 'components/shared/header/search/Search'
+import Search from 'components/shared/header/Search'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import { changeUsername, logout } from 'store/thunks/authThunks'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
@@ -37,13 +37,13 @@ const Header = () => {
       <Modal active={isModalLoginActive} setActive={setIsModalLoginActive} width={304} height={394}>
         <Login />
       </Modal>
-      <div className={s.header}>
-        <NavLink to='/' className={s.header__logo}>
+      <div className={s.root}>
+        <NavLink to='/' className={s.logo}>
           <Logo />
         </NavLink>
         <Search onSubmit={onSubmitSearch} />
         {isAuth ? (
-          <div className={s.header__username}>
+          <div className={s.username}>
             {isEditUsername ? (
               <StyledInput
                 value={usernameInput}

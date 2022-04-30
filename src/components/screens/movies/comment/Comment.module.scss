@@ -1,0 +1,25 @@
+@import 'assets/scss/variables.module';
+
+.root {
+  background-color: $color-background;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.username {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.deleteIcon {
+  position: absolute;
+  top: 0;
+  right: -32px;
+  cursor: pointer;
+
+  @media (max-width: $screen-s-max) {
+    right: -22px;
+  }
+}

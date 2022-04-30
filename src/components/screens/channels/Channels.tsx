@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { IChannelsData } from '__mocks/mocks'
-import ChannelItem from 'components/shared/channel-item/ChannelItem'
+import ChannelItem from 'components/screens/channels/channel-item/ChannelItem'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 

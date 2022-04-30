@@ -1,13 +1,13 @@
-@import "src/assets/scss/variables.module";
+@import 'src/assets/scss/variables.module';
 
-.modal {
+.root {
   position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(51, 51, 51, .6);
+  background-color: rgba(51, 51, 51, 0.6);
   pointer-events: none;
   opacity: 0;
 
@@ -15,14 +15,13 @@
   justify-content: center;
   align-items: center;
 
-  transition-duration: .3s;
-
-  &__content {
-    background-color: white;
-    border-radius: 8px;
-    transform: scale(.5);
-    transition-duration: .3s;
-  }
+  transition-duration: 0.3s;
+}
+.content {
+  background-color: white;
+  border-radius: 8px;
+  transform: scale(0.5);
+  transition-duration: 0.3s;
 }
 
 .active {

@@ -1,9 +1,9 @@
-.customCheckbox {
+.root {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
-.customCheckbox+label {
+.root + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
@@ -22,16 +22,16 @@
     background-position: center center;
   }
 }
-.customCheckbox:checked+label::before {
+.root:checked + label::before {
   //border-color: #0b76ef;
   //background-color: #0b76ef;
-  background-image: url("../../../assets/images/checkMark.svg");
+  background-image: url('../../../assets/images/checkMark.svg');
 }
 /* focus */
-.customCheckbox:not(:disabled):not(:checked)+label:hover::before {
+.root:not(:disabled):not(:checked) + label:hover::before {
   border-color: black;
 }
 /* disabled */
-.customCheckbox:disabled+label::before {
+.root:disabled + label::before {
   border: 1px solid #aaa;
 }

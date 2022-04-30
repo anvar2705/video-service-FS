@@ -1,13 +1,13 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ICountry, IGenre } from 'models/models'
-import Comment from 'components/screens/movies/movie-page/Comment'
+import Comment from 'components/screens/movies/comment/Comment'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import StyledButton from 'components/shared/buttons/StyledButton'
 import StyledInputComment from 'components/shared/inputs/inputComment/StyledInputComment'
 import s from './MoviePage.module.scss'
 import { ReactComponent as GoBackIcon } from 'assets/images/goBack.svg'
 import { getOneMovieThunk, postCommentThunk } from 'store/thunks/movieThunks'
+import MovieInfoItem from '../movie-info-item/MovieInfoItem'
 
 const MoviePage = () => {
   const [commentValue, setCommentValue] = useState('')
@@ -27,9 +27,9 @@ const MoviePage = () => {
   }
 
   return (
-    <div className={s.moviePageContainer}>
+    <div className={s.root}>
       <GoBackIcon
-        className={s.moviePageContainer__goBackIcon}
+        className={s.root__goBackIcon}
         onClick={() => {
           navigate('/')
         }}
@@ -39,7 +39,7 @@ const MoviePage = () => {
       ) : (
         <>
           <div className={s.movie}>
-            <div className={s.movie__image}>
+            <div className={s.image}>
               <img
                 src={
                   movie.id === 0
@@ -57,16 +57,16 @@ const MoviePage = () => {
             </div>
           </div>
           <div className={s.comments}>
-            <div className={s.comments__title}>Комментарии</div>
+            <div className={s.title}>Комментарии</div>
             {isAuth ? (
-              <div className={s.comments__inputWrapper}>
+              <div className={s.inputWrapper}>
                 <StyledInputComment
                   name='comment'
                   id='comment'
                   placeholder='Введите комментарий...'
                   value={commentValue}
                   onChange={(event) => setCommentValue(event.target.value)}
-                  className={s.comments__input}
+                  className={s.input}
                 />
                 <StyledButton onClick={onPostComment}>Опубликовать</StyledButton>
               </div>
@@ -82,26 +82,3 @@ const MoviePage = () => {
 }
 
 export default MoviePage
-
-const MovieInfoItem: FC<{ title: string; subtitle: string | Array<ICountry | IGenre> }> = ({
-  title,
-  subtitle,
-}) => {
-  return (
-    <div className={s.movieInfoItem}>
-      <div className={s.movieInfoItem__title}>{title}</div>
-      <div className={s.movieInfoItem__subtitle}>
-        {typeof subtitle === 'string' ? (
-          <span style={{ fontWeight: 500 }}>{subtitle}</span>
-        ) : (
-          subtitle.map((item, index) => (
-            <span key={item.id}>
-              {item.value}
-              {subtitle.length === index + 1 ? null : ', '}
-            </span>
-          ))
-        )}
-      </div>
-    </div>
-  )
-}

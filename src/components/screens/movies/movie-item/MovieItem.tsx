@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import s from '../Movies.module.scss'
+import s from './MovieItem.module.scss'
 
 interface IMovieItemProps {
   imageSrc: string
@@ -9,12 +9,12 @@ interface IMovieItemProps {
 
 const MovieItem: FC<IMovieItemProps> = ({ imageSrc, name, description }) => {
   return (
-    <div className={s.movieItem}>
-      <div className={s.movieItem__image}>
+    <div className={s.root}>
+      <div className={s.image}>
         <img src={require(`assets/images/movie${imageSrc}.png`)} alt={name} />
       </div>
-      <div className={s.movieItem__name}>{name}</div>
-      <div className={s.movieItem__description}>{description}</div>
+      <div className={s.name}>{name}</div>
+      <div className={s.description}>{description}</div>
     </div>
   )
 }

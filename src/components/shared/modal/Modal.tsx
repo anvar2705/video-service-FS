@@ -12,13 +12,13 @@ interface IModalProps {
 const Modal: FC<IModalProps> = ({ active, setActive, width, height, children }) => {
   return (
     <div
-      className={classNames(s.modal, { [s.active]: active })}
+      className={classNames(s.root, { [s.active]: active })}
       onMouseDown={() => {
         setActive(false)
       }}
     >
       <div
-        className={classNames(s.modal__content, { [s.active]: active })}
+        className={classNames(s.content, { [s.active]: active })}
         style={{ width: `${width}px`, height: `${height}px` }}
         onMouseDown={(event) => {
           event.stopPropagation()

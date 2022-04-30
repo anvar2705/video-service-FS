@@ -12,7 +12,7 @@ const Checkbox: FC<ICheckboxProps> = ({ checked, onChange, label }) => {
     <>
       <input
         type='checkbox'
-        className={s.customCheckbox}
+        className={s.root}
         id='custom checkbox'
         name='custom checkbox'
         checked={checked}

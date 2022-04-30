@@ -24,10 +24,10 @@ const Tabs: FC<ITabsProps> = ({ items }) => {
 
   return (
     <div>
-      <div className={s.tab}>
+      <div className={s.root}>
         {items.map((tab, index) => (
           <button
-            className={classNames(s.tab__link, { [s.active]: index === activeTab })}
+            className={classNames(s.link, { [s.active]: index === activeTab })}
             onClick={openTab}
             data-index={index}
             key={`${tab.title}${index}`}

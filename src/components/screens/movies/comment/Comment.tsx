@@ -4,7 +4,7 @@ import { API } from 'api/api'
 import { ReactComponent as DeleteIcon } from 'assets/images/deleteIcon.svg'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { deleteCommentThunk } from 'store/thunks/movieThunks'
-import s from 'components/screens/movies/movie-page/MoviePage.module.scss'
+import s from 'components/screens/movies/comment/Comment.module.scss'
 
 const Comment: FC<{ comment: IComment }> = ({ comment }) => {
   const [username, setUsername] = useState('')
@@ -33,11 +33,11 @@ const Comment: FC<{ comment: IComment }> = ({ comment }) => {
   }
 
   return (
-    <div className={s.comments__item}>
-      <div className={s.comments__username}>{username}</div>
+    <div className={s.root}>
+      <div className={s.username}>{username}</div>
       {comment.value}
       {userId === comment.userId ? (
-        <DeleteIcon className={s.comments__deleteIcon} onClick={onDeleteComment} />
+        <DeleteIcon className={s.deleteIcon} onClick={onDeleteComment} />
       ) : null}
     </div>
   )

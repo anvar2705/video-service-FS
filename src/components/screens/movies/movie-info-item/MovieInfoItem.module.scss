@@ -1,0 +1,19 @@
+@import 'assets/scss/variables.module';
+
+.root {
+  display: flex;
+  margin-bottom: 16px;
+
+  @media (max-width: $screen-xs-max) {
+    flex-direction: column;
+  }
+}
+.title {
+  width: 104px;
+  flex-shrink: 0;
+}
+.subtitle {
+  max-width: 480px;
+  width: 100%;
+  font-size: 20px;
+}
