@@ -37,8 +37,8 @@ const Movies: FC<IMoviesProps> = ({ genresData }) => {
       <div className={s.title}>Жанры</div>
       <div className={classNames(s.section, s.section__last)}>
         {genresData.length !== 0 ? (
-          genresData.map((item) => (
-            <GenreItem image={item.image} title={item.title} key={item.id} />
+          genresData.map((item, index) => (
+            <GenreItem image={item.image} title={item.title} key={item.id} color={index} />
           ))
         ) : (
           <span>Нет жанров</span>
