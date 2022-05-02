@@ -7,7 +7,7 @@ interface IGenreProps {
   color?: number
 }
 
-const GenreRoot = styled.div<{ readonly bgColor?: number }>`
+const GenreRoot = styled.div<{ bgColor?: number }>`
   width: 280px;
   height: 208px;
   border-radius: 6px;
