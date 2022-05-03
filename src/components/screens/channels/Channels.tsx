@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IChannelsData } from '__mocks/mocks'
 import ChannelItem from 'components/screens/channels/channel-item/ChannelItem'
-import CustomScrollbarCSS from 'components/ui/scrollbars/CustomScrollbarCSS'
+import CustomScrollbarJS from 'components/ui/scrollbars/CustomScrollbarJS'
 
 interface IChannelsProps {
   channelsData: Array<IChannelsData>
@@ -9,7 +9,17 @@ interface IChannelsProps {
 
 const Channels: FC<IChannelsProps> = ({ channelsData }) => {
   return (
-    <CustomScrollbarCSS height={696} style={{ marginBottom: '72px' }}>
+    <CustomScrollbarJS
+      height={696}
+      trackWidth={8}
+      trackColor='#F2F2F2'
+      trackBorderRadius={2}
+      thumbWidth={4}
+      thumbColor='#BDBDBD'
+      thumbColorHover='#8d8d8d'
+      thumbColorActive='#606060'
+      style={{ marginBottom: '72px' }}
+    >
       {channelsData.map((item) => (
         <ChannelItem
           key={item.id}
@@ -19,7 +29,7 @@ const Channels: FC<IChannelsProps> = ({ channelsData }) => {
           schedule={item.schedule}
         />
       ))}
-    </CustomScrollbarCSS>
+    </CustomScrollbarJS>
   )
 }
 
