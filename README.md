@@ -1,25 +1,35 @@
 # Movies viki application (full stack)
 
-## Start server
+## 1. Install dependencies
+
+Install dependencies in the root folder:
+
+### `npm install`
+
+Install dependencies in the server folder:
+
+### `cd server`
+### `npm install`
+
+## 2. Start server
 
 To start server you have to install Docker.
 
-Then start the server with this command (localhost:5000):
+Then start the server on port 5000 with this command:
 
+### `cd..` - run if you are in the server folder 
 ### `npm run start-server`
 
-## Start server
-
-Start client application:
+## 3. Start client application:
 
 ### `npm start`
 
-## Stop server
-
-### `npm run stop-server`
-
 ***
 ## NOTES
+
+### Stop server:
+
+### `npm run stop-server`
 
 Run the application only after the server has started!
 Server runs on the port 5000 by default.
